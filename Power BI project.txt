@@ -1,0 +1,23 @@
+UniqueSystem  is a company with employees whose details are stored in the given dataset. The dataset includes various employee attributes such as employee ID, name, position, department, and date of birth, date of joining, experience years, phone number, email, address, salary, gender, marital status, nationality, country, emergency contact details, education qualifications, skills, benefits, and attendance details. With this information, UniqueSystem can track and manage their workforce effectively.
+
+
+Data Cleaning - To combine multiple tables in Power Query of Power BI, we have used the "Append Queries" feature and select the relevant tables, ensuring they have the same structure. Renaming tables and organizing them in folders can help with navigation.
+
+* "Change Type" option in Power Query to alter data types for each column.
+
+* "Replace Values" option in Power Query to edit the Employee Name column to have each word capitalized.
+
+* "Remove Duplicates" option in Power Query to remove duplicate values from the dataset.
+
+* "Add Conditional Column" option in Power Query and set the condition to display the level of experience based on the Salary column.
+
+* "Merge Queries" option and match the tables on the Employee ID column
+
+
+
+Data Modeling - Set up relationships between employee data and other related tables like performance, absenteeism, and training.
+
+
+Visualizations - Build comprehensive dashboard with key metrics like Marital status by gender, Count of attendance by year, Employee salary, Count of emoloyee by nationality, Total employees, Countries  and more.
+
+Publish - Power BI's ability to publish and share reports facilitate seamless collaboration and teamwork in data analysis projects.

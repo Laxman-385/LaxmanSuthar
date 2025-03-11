@@ -1,0 +1,161 @@
+create schema cars;
+
+create database car_sale;
+
+use car_sale;
+
+create table cars (
+    car_id int auto_increment primary key,
+    name varchar(50),
+    model varchar(50),
+    year int,
+    price decimal(10, 2),
+    color varchar(20)
+);
+
+
+create table customers (
+    customer_id int auto_increment primary key,
+    first_name varchar(50),
+    last_name varchar(50),
+    email varchar(100),
+    phone varchar(15)
+);
+
+
+create table salespeople (
+    salesperson_id int auto_increment primary key,  
+    first_name varchar(50),
+    last_name varchar(50),
+    phone varchar(15)
+);
+
+
+
+create table sales (
+    sale_id int auto_increment primary key,  
+    car_id int,
+    customer_id int,
+    salesperson_id int,
+    sale_date date,
+    sale_price decimal(10, 2),
+    foreign key (car_id) references cars(car_id),
+	foreign key (customer_id) references customers(customer_id),
+   foreign key (salesperson_id) references salespeople(salesperson_id)
+);
+
+
+insert into cars (name, model, year, price, color) values
+('Toyota', 'Camry', 2020, 25000.00, 'Blue'),
+('Honda', 'Civic', 2022, 22000.00, 'Red'),
+('Ford', 'Mustang', 2021, 35000.00, 'Black');
+
+
+
+ insert into customers (first_name, last_name, email, phone) values
+('John', 'Doe', 'john.doe@example.com', '555-1234'),
+('Jane', 'Smith', 'jane.smith@example.com', '555-5678');
+
+
+
+insert into salespeople (first_name, last_name, phone) values
+('Alice', 'Johnson', '555-8765'),
+('Bob', 'Williams', '555-4321');
+
+
+
+insert into sales (car_id, customer_id, salesperson_id, sale_date, sale_price) values
+(1, 1, 1, '2025-01-01', 25000.00),
+(2, 2, 2, '2025-01-05', 22000.00);
+
+
+describe cars;
+
+
+select * from cars;
+
+
+---------------generic questions---------------------------
+
+
+
+-- -----1.What cars are currently available for sale, including their name, model, year, and price?------
+
+select  name, model, year, price FROM cars;
+
+
+
+
+-- -----2.What are the details of a particular car (e.g., "Toyota Camry")?------
+
+select * from cars where name ='toyota' and model = 'camry';
+
+
+
+
+-- -----3.Who are the customers?---------
+
+select * from customers;
+
+
+
+
+-- ------4.Who are the salespeople working at the dealership?------
+
+select * from salespeople;
+
+
+
+
+-- -----5.What cars are available within a particular price range (e.g., $20,000 to $30,000)?-------
+
+select name, model,  year, price from cars where price between 20000 and 30000;
+
+
+
+
+-- -----6.What is the total revenue from all sales?----------
+
+select SUM(s.sale_price) as total_revenue from sales s;
+
+
+
+
+-- -----7.What is the average sale price of all cars sold?-------alter
+
+select avg(s.sale_price) as average_sale_price from sales s;
+
+
+
+
+-- -----8.Which cars are still available for sale (i.e., not sold yet)?------
+
+select name, model, year, price
+from cars
+where car_id not in (select car_id from sales);
+
+
+
+
+-- -----9.How many cars have been sold in total?------
+
+select COUNT(*) from sales;
+
+
+
+-- -----10.What cars are made by "Ford"?-----
+
+select * from cars where name = 'Ford';
+
+
+
+
+
+
+
+
+
+
+
+
+
